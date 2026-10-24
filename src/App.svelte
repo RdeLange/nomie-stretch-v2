@@ -4,6 +4,7 @@
   import { addRoutine, dayKey, todayCount, type Daily } from './daily';
   import { paletteFrom, type Palette } from './palette';
   import { offerTracker } from './tracker-offer';
+  import { onPrefsChange } from './prefs-live';
 
   const TRACKER = { tag: 'movement', label: 'Movement', emoji: '🤸', color: '#30B0C7' };
   const STORAGE_KEY = 'stretch';
@@ -65,7 +66,8 @@
       addToMoreMenu: true,
       addToWidgets: true,
     });
-    plugin.onRegistered(async () => {
+    onPrefsChange(plugin, () => applyNomieValues());
+  plugin.onRegistered(async () => {
       applyNomieValues();
       await load();
     });
