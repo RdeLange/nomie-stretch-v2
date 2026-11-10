@@ -1,12 +1,14 @@
+import { t } from './i18n/index.svelte';
+
 // The stretch routine and its timer, as plain rules. The screen only shows the state.
 export type Stretch = { name: string; seconds: number; cue: string };
 
 export const ROUTINE: Stretch[] = [
-  { name: 'Neck rolls', seconds: 30, cue: 'Slowly roll your head from side to side.' },
-  { name: 'Shoulder rolls', seconds: 30, cue: 'Roll your shoulders back, ten times.' },
-  { name: 'Side stretch', seconds: 30, cue: 'Reach over, left and right.' },
-  { name: 'Hip flexor stretch', seconds: 40, cue: 'Step forward, sink gently, breathe.' },
-  { name: 'Hamstring reach', seconds: 30, cue: 'Bend forward, let your arms hang.' },
+  { seconds: 30, get name() { return t('neckName'); }, get cue() { return t('neckCue'); } },
+  { seconds: 30, get name() { return t('shoulderName'); }, get cue() { return t('shoulderCue'); } },
+  { seconds: 30, get name() { return t('sideName'); }, get cue() { return t('sideCue'); } },
+  { seconds: 40, get name() { return t('hipName'); }, get cue() { return t('hipCue'); } },
+  { seconds: 30, get name() { return t('hamName'); }, get cue() { return t('hamCue'); } },
 ];
 
 // step: -1 not started, 0 to ROUTINE.length - 1 the stretch that runs, ROUTINE.length finished
