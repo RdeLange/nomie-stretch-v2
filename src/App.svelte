@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { startSnapshots } from './snapshot';
   import { onMount } from 'svelte';
   import { ROUTINE, NOT_STARTED, startRoutine, tick, nextStep, isRunning, isFinished, currentStretch, type RoutineState } from './routine';
   import { addRoutine, dayKey, todayCount, type Daily } from './daily';
@@ -72,6 +73,7 @@
       addToMoreMenu: true,
       addToWidgets: true,
     });
+    startSnapshots(plugin);
     onPrefsChange(plugin, () => applyNomieValues());
   plugin.onRegistered(async () => {
       applyNomieValues();
